@@ -8,6 +8,10 @@ df = pd.read_parquet('../data/assurances_enrichi.parquet')
 prime_moy = df['Prime_estimee'].mean()
 print(f"Prime moyenne : {prime_moy:.2f} €")
 
-# Calcul par région (ajout)
+# Calcul par région
 prime_region = df.groupby('Region_MAJ')['Prime_estimee'].mean().sort_values(ascending=False)
 print(prime_region)
+
+# Nouvelle ligne : prime par carburant
+prime_carbu = df.groupby('Carburant')['Prime_estimee'].mean()
+print(prime_carbu)
